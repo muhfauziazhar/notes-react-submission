@@ -4,6 +4,7 @@ import Layout from './Layout';
 import MainPage from './pages/MainPage';
 import AddNewNote from './pages/AddNewNote';
 import NoteDetail from './pages/NoteDetail';
+import NotFound from './pages/NotFound';
 
 const Router = () => {
     return (
@@ -44,6 +45,14 @@ const Router = () => {
                     element={
                         <Layout>
                             <NoteDetail />
+                        </Layout>
+                    }
+                />
+                <Route
+                    path='*'
+                    element={
+                        <Layout>
+                            <NotFound />
                         </Layout>
                     }
                 />

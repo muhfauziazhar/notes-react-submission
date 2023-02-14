@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ButtonType = ({ type, onClick }) => {
     const generateIcon = (type) => {
@@ -76,6 +77,11 @@ const ButtonType = ({ type, onClick }) => {
             {generateIcon(type)}
         </button>
     );
+};
+
+ButtonType.propType = {
+    type: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
 };
 
 export default ButtonType;

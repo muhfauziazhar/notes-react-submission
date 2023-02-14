@@ -5,6 +5,7 @@ import NoteListEmpty from '../components/NoteListEmpty';
 import NotesList from '../components/NotesList';
 import SearchBar from '../components/SearchBar';
 import { getActiveNotes, getArchivedNotes } from '../utils';
+import PropTypes from 'prop-types';
 
 const MainPage = ({ title, isArchived }) => {
     const navigate = useNavigate();
@@ -50,6 +51,11 @@ const MainPage = ({ title, isArchived }) => {
             )}
         </section>
     );
+};
+
+MainPage.propTypes = {
+    title: PropTypes.string.isRequired,
+    isArchived: PropTypes.bool.isRequired,
 };
 
 export default MainPage;

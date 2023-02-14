@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const SearchBar = ({ query, onChange }) => {
     return (
@@ -11,6 +12,11 @@ const SearchBar = ({ query, onChange }) => {
             />
         </section>
     );
+};
+
+SearchBar.propTypes = {
+    query: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
 };
 
 export default SearchBar;

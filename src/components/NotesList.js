@@ -1,5 +1,6 @@
 import React from 'react';
 import NoteItem from './NoteItem';
+import PropTypes from 'prop-types';
 
 const NotesList = ({ notes }) => {
     return (
@@ -18,6 +19,17 @@ const NotesList = ({ notes }) => {
                 })}
         </section>
     );
+};
+
+NotesList.propTypes = {
+    notes: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            title: PropTypes.string.isRequired,
+            createdAt: PropTypes.string.isRequired,
+            body: PropTypes.string.isRequired,
+        })
+    ),
 };
 
 export default NotesList;
