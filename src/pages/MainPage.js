@@ -9,7 +9,8 @@ import { getActiveNotes, getArchivedNotes } from '../utils';
 const MainPage = ({ title, isArchived }) => {
     const navigate = useNavigate();
     const [notes, setNotes] = useState([]);
-    const [query, setQuery] = useState('');
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [query, setQuery] = useState(searchParams.get('keyword') || '');
 
     useEffect(() => {
         isArchived
@@ -25,10 +26,15 @@ const MainPage = ({ title, isArchived }) => {
               );
     }, [isArchived, query]);
 
+    const handleFilterChange = (event) => {
+        setQuery(event.target.value);
+        setSearchParams({ keyword: event.target.value });
+    };
+
     return (
         <section>
             <h2>{title}</h2>
-            <SearchBar query={query} setQuery={setQuery} />
+            <SearchBar query={query} onChange={handleFilterChange} />
             <NotesList notes={notes} />
             {notes.length === 0 && <NoteListEmpty />}
             {isArchived ? (
