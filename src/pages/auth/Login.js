@@ -8,7 +8,7 @@ import { login, putAccessToken } from '../../utils/network-data';
 const Login = () => {
     const navigate = useNavigate();
     const { state } = useContext(GlobalContext);
-    const { lang } = state;
+    const { setIsLogin, lang } = state;
     const [input, setInput] = useState(loginState);
 
     const handleChange = (event) => {
@@ -19,6 +19,7 @@ const Login = () => {
         event.preventDefault();
         login(input).then((res) => {
             putAccessToken(res.data.accessToken);
+            setIsLogin(true);
             alert('Login successfull');
             navigate('/');
         });

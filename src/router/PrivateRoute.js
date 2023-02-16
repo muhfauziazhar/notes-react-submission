@@ -1,18 +1,14 @@
-import React from 'react';
-import { getAccessToken } from '../utils/network-data';
+import React, { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
 import Layout from '../Layout';
+import { GlobalContext } from '../GlobalContext';
 
 const PrivateRoute = ({ children }) => {
-    if (getAccessToken() === null) {
-        return <Navigate to={'/auth/login'} />;
+    const { state } = useContext(GlobalContext);
+    if (state.isLogin) {
+        return <Layout>{children}</Layout>;
     } else {
-        console.log('ke dua', getAccessToken());
-        return (
-            <>
-                <Layout>{children}</Layout>
-            </>
-        );
+        return <Navigate to={'/auth/login'} />;
     }
 };
 

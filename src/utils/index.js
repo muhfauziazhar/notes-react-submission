@@ -1,14 +1,21 @@
 import {
-    getAllNotes,
+    getTheme,
+    putTheme,
+    getLocale,
+    putLocale,
+    getAccessToken,
+    putAccessToken,
+    login,
+    register,
+    getUserLogged,
+    addNote,
     getActiveNotes,
     getArchivedNotes,
-    deleteNote,
-    editNote,
     getNote,
     archiveNote,
     unarchiveNote,
-    addNote,
-} from './local-data';
+    deleteNote,
+} from './network-data';
 
 const showFormattedDate = (date) => {
     const options = {
@@ -22,13 +29,20 @@ const showFormattedDate = (date) => {
 
 export {
     showFormattedDate,
-    getAllNotes,
+    getTheme,
+    putTheme,
+    getLocale,
+    putLocale,
+    getAccessToken,
+    putAccessToken,
+    login,
+    register,
+    getUserLogged,
+    addNote,
     getActiveNotes,
     getArchivedNotes,
-    deleteNote,
-    editNote,
     getNote,
     archiveNote,
     unarchiveNote,
-    addNote,
+    deleteNote,
 };

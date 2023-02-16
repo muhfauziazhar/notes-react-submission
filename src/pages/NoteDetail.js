@@ -16,7 +16,7 @@ const NoteDetail = () => {
     const params = useParams();
 
     useEffect(() => {
-        setNote(getNote(params.id));
+        getNote(params.id).then((res) => setNote(res.data));
     }, [params.id]);
 
     const onClickArsip = (isArchive, id) => {

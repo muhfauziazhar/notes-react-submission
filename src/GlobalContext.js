@@ -3,7 +3,6 @@ import {
     getAccessToken,
     getLocale,
     getTheme,
-    getUserLogged,
     putLocale,
     putTheme,
 } from './utils/network-data';
@@ -13,6 +12,7 @@ export const GlobalContext = createContext();
 export const GlobalProvider = ({ children }) => {
     const [theme, setTheme] = useState(getTheme);
     const [lang, setLang] = useState(getLocale);
+    const [isLogin, setIsLogin] = useState(getAccessToken);
 
     const handleTheme = () => {
         setTheme((prevState) => (prevState === 'dark' ? 'light' : 'dark'));
@@ -33,6 +33,8 @@ export const GlobalProvider = ({ children }) => {
     const state = {
         theme,
         lang,
+        isLogin,
+        setIsLogin,
     };
 
     const handleFunction = {

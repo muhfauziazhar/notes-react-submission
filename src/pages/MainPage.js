@@ -18,25 +18,37 @@ const MainPage = ({ isArchived }) => {
     const [query, setQuery] = useState(searchParams.get('keyword') || '');
 
     useEffect(() => {
-        isArchived
-            ? setNotes(
-                  getArchivedNotes().filter((note) =>
-                      note.title.toLowerCase().includes(query?.toLowerCase())
-                  )
-              )
-            : setNotes(
-                  getActiveNotes().filter((note) =>
-                      note.title.toLowerCase().includes(query?.toLowerCase())
-                  )
-              );
+        get_listNotes(isArchived);
     }, [isArchived, query]);
+
+    const get_listNotes = (isArchived) => {
+        isArchived
+            ? getArchivedNotes().then((res) => {
+                  setNotes(
+                      res.data.filter((note) =>
+                          note.title
+                              .toLowerCase()
+                              .includes(query?.toLowerCase())
+                      )
+                  );
+              })
+            : getActiveNotes().then((res) => {
+                  setNotes(
+                      res.data.filter((note) =>
+                          note.title
+                              .toLowerCase()
+                              .includes(query?.toLowerCase())
+                      )
+                  );
+              });
+    };
 
     const handleFilterChange = (event) => {
         setQuery(event.target.value);
         setSearchParams({ keyword: event.target.value });
     };
 
-    return (
+    return notes ? (
         <section>
             <h2>
                 {isArchived
@@ -57,6 +69,8 @@ const MainPage = ({ isArchived }) => {
                 </div>
             )}
         </section>
+    ) : (
+        <h1>Loading...</h1>
     );
 };
 

@@ -18,33 +18,33 @@ const Router = () => {
                     <Route
                         path='/'
                         element={
-                            <Layout>
+                            <PrivateRoute>
                                 <MainPage isArchived={false} />
-                            </Layout>
+                            </PrivateRoute>
                         }
                     />
                     <Route
                         path='/archives'
                         element={
-                            <Layout>
+                            <PrivateRoute>
                                 <MainPage isArchived={true} />
-                            </Layout>
+                            </PrivateRoute>
                         }
                     />
                     <Route
                         path='/notes/new'
                         element={
-                            <Layout>
+                            <PrivateRoute>
                                 <AddNewNote />
-                            </Layout>
+                            </PrivateRoute>
                         }
                     />
                     <Route
                         path='/notes/:id'
                         element={
-                            <Layout>
+                            <PrivateRoute>
                                 <NoteDetail />
-                            </Layout>
+                            </PrivateRoute>
                         }
                     />
                     <Route
