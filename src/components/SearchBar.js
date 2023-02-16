@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { GlobalContext } from '../GlobalContext';
+import { locale } from '../constants/localizations';
 
 const SearchBar = ({ query, onChange }) => {
+    const { state } = useContext(GlobalContext);
+    const { lang } = state;
     return (
         <section className='search-bar'>
             <input
                 type='text'
-                placeholder='Cari berdasarkan judul ...'
+                placeholder={locale[lang].searchPlaceholder}
                 value={query}
                 onChange={(event) => onChange(event)}
             />

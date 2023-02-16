@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import ButtonType from '../components/ButtonType';
 import NoteListEmpty from '../components/NoteListEmpty';
@@ -6,8 +6,12 @@ import NotesList from '../components/NotesList';
 import SearchBar from '../components/SearchBar';
 import { getActiveNotes, getArchivedNotes } from '../utils';
 import PropTypes from 'prop-types';
+import { GlobalContext } from '../GlobalContext';
+import { locale } from '../constants/localizations';
 
-const MainPage = ({ title, isArchived }) => {
+const MainPage = ({ isArchived }) => {
+    const { state } = useContext(GlobalContext);
+    const { lang } = state;
     const navigate = useNavigate();
     const [notes, setNotes] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
@@ -34,7 +38,11 @@ const MainPage = ({ title, isArchived }) => {
 
     return (
         <section>
-            <h2>{title}</h2>
+            <h2>
+                {isArchived
+                    ? lang && locale[lang].archivePageTitle
+                    : lang && locale[lang].homePageTitle}
+            </h2>
             <SearchBar query={query} onChange={handleFilterChange} />
             <NotesList notes={notes} />
             {notes.length === 0 && <NoteListEmpty />}
@@ -43,7 +51,6 @@ const MainPage = ({ title, isArchived }) => {
             ) : (
                 <div className='homepage__action'>
                     <ButtonType
-                        page={'homepage'}
                         type={'Add'}
                         onClick={() => navigate('/notes/new')}
                     />
@@ -54,7 +61,6 @@ const MainPage = ({ title, isArchived }) => {
 };
 
 MainPage.propTypes = {
-    title: PropTypes.string.isRequired,
     isArchived: PropTypes.bool.isRequired,
 };
 

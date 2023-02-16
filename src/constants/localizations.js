@@ -1,0 +1,28 @@
+export const locale = {
+    id: {
+        navTitle: 'Aplikasi Catatan',
+        navArchive: 'Terarsip',
+        homePageTitle: 'Catatan Aktif',
+        archivePageTitle: 'Catatan Arsip',
+        searchPlaceholder: 'Cari berdasarkan judul ...',
+        loginPageTitle: 'Yuk, login untuk menggunakan aplikasi.',
+        loginSentences: 'Belum punya akun?',
+        loginAction: 'Daftar di sini',
+        registerPageTitle: 'Isi form untuk mendaftar akun.',
+        registerSentences: 'Sudah punya akun?',
+        registerAction: 'Login di sini',
+    },
+    en: {
+        navTitle: 'Notes App',
+        navArchive: 'Archived',
+        homePageTitle: 'Active Notes',
+        archivePageTitle: 'Archived Notes',
+        searchPlaceholder: 'Search by title ...',
+        loginPageTitle: 'Already have an account?',
+        loginSentences: "Don't have an account?",
+        loginAction: 'Register here',
+        registerPageTitle: 'Fill the form to register account.',
+        registerSentences: 'Already have an account?',
+        registerAction: 'Login here',
+    },
+};
